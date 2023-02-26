@@ -1,0 +1,85 @@
+body{
+    padding: 0;
+    font-size: 20px;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.content{
+    display: flex;
+    flex-direction: row;
+}
+
+.half-screen-wrap{
+    width: 50%;
+}
+
+.table-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.table-item{
+    width: 180px;
+    background-color: gainsboro;
+    margin-bottom: 5px;
+    overflow: hidden;
+}
+
+.dark-back{
+    background-color: gray;
+}
+
+.light-back{
+    background-color: darkgray;
+}
+
+.table-head{
+    background-color: lightslategray;
+}
+
+.edit-field{
+    width: 100%;
+    position: sticky;
+    top: 0;
+    padding: 20px;
+    background-color: cornsilk;
+}
+
+.input-field{
+    width: 70%;
+    margin: auto;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 10px;
+    background-color: aliceblue;
+    border: 1px solid #888888;
+    border-radius: 13px;
+}
+
+.input-field span{
+    margin-bottom: 18px;
+    font-weight: bold;
+}
+
+.input-field input{
+    width: 50%;
+    border: 1px solid #888888;
+    border-radius: 5px;
+    height: 20px;
+}
+
+.input-field textarea{
+    border: 1px solid #888888;
+    border-radius: 5px;
+    height: 70px;
+}
+
+.hideColumn{
+    width: 10px;
+}
+
+.showColumn{
+}

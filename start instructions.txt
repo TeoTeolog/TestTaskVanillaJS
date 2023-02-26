@@ -1,0 +1,4 @@
+1) start mockup Server by
+1.1)run command "npm start"
+2)open front-end
+2.1)open in dir client "index.html"

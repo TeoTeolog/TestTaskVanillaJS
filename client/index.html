@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>TestTask</title>
+    <link rel="stylesheet" type="text/css" href="src/css/styles.css"/>
+</head>
+<body>
+<header>
+    <h1>TestTask</h1>
+</header>
+<main>
+    <div class="content">
+        <div class="half-screen-wrap">
+            <div class="table">
+                <div class="table-row table-head">
+                    <div class="table-item firstName">
+                        Имя (firstName)
+                        <button id="sortByFirstName" name="name.firstName">\/</button>
+                    </div>
+                    <div class="table-item lastName">
+                        Фамилия (lastName)
+                        <button id="sortByLastName" name="name.lastName">\/</button>
+                    </div>
+                    <div class="table-item about">
+                        Описание (about)
+                        <button id="sortByAbout" name="about">\/</button>
+                    </div>
+                    <div class="table-item eyeColor">
+                        Цвет глаз (eyeColor)
+                        <button id="sortByEyeColor" name="eyeColor">\/</button>
+                    </div>
+                </div>
+                <section id="content_box">
+                </section>
+            </div>
+        </div>
+        <div class="half-screen-wrap">
+            <section class="edit-field" id="edit_box">
+                <div class="input-field">
+                    <span class="out-text">Имя</span>
+                    <input type="text"/>
+                </div>
+                <div class="input-field">
+                    <span class="out-text">Фамилия</span>
+                    <input type="text"/>
+                </div>
+                <div class="input-field">
+                    <span class="out-text">Телефон</span>
+                    <input type="text"/>
+                </div>
+                <div class="input-field">
+                    <span class="out-text">Описание</span>
+                    <textarea id="story" name="story"
+                              rows="5" cols="33"> </textarea>
+                </div>
+                <div class="input-field">
+                    <span class="out-text">Цвет глаз</span>
+                    <input type="text"/>
+                </div>
+                <div class="input-field">
+                    <button>Сохранить</button><button>Отменить</button>
+                </div>
+            </section>
+        </div>
+    </div>
+</main>
+</body>
+</html>
+<script type="text/javascript" src="src/scripts/script.js"></script>
