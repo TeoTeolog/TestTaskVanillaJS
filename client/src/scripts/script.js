@@ -66,25 +66,6 @@ function parsePerson(data, index){ //HTMLString
     return personComponentString
 }
 
-fetch(requestURL, {
-    method: 'GET',
-    headers: {
-        'Content-type': "application/json",
-    }
-})
-    .then(function (res){
-        return res.json()
-    })
-    .then(function (data) {
-        console.log('Request succeeded with JSON response', data);
-        contentData = data;
-        fillTable();
-        // addHide();
-    })
-    .catch(function (error) {
-        console.log('Request failed', error);
-    });
-
 function addEventListener(){
     const elementsRow = document.getElementsByClassName("table-row")
     for (let i = 0; i < elementsRow.length; i++){
@@ -105,7 +86,7 @@ function parseEdit(data){ //HTMLString
             </div>
             <div class="input-field">
                 <span class="out-text">Фамилия</span>
-                <input id="lastNameInput" value="`+data.name.lastName+`"/>
+                <input id="lastNameInput" type="text" value="`+data.name.lastName+`"/>
             </div>
             <div class="input-field">
                 <span class="out-text">Телефон</span>
@@ -113,8 +94,7 @@ function parseEdit(data){ //HTMLString
             </div>
             <div class="input-field">
                 <span class="out-text">Описание</span>
-                <textarea id="aboutInput"
-                          rows="5" cols="33">`+data.about+`</textarea>
+                <textarea id="aboutInput">`+data.about+`</textarea>
             </div>
             <div class="input-field">
                 <span class="out-text">Цвет глаз</span>
@@ -224,7 +204,7 @@ const headTable = document.getElementsByClassName('table-head');
 const headItems = headTable[0].getElementsByClassName('table-item');
 
 function switchHideColumn(columnClassName){
-    const columnItems = document.getElementsByClassName(columnClassName);
+    const columnItems = document.querySelectorAll('.' + columnClassName.split(' ').join('.'));
     if(columnClassName.includes('hideColumn')){
         for(let i = 0; i < columnItems.length; i++){
             columnItems[i].className = columnItems[i].className.replace('hideColumn','showColumn');
@@ -252,4 +232,21 @@ function addHide(){
     }
 }
 
-
+fetch(requestURL, {
+    method: 'GET',
+    headers: {
+        'Content-type': "application/json",
+    }
+})
+    .then(function (res){
+        return res.json()
+    })
+    .then(function (data) {
+        console.log('Request succeeded with JSON response', data);
+        contentData = data;
+        fillTable();
+        addHide();
+    })
+    .catch(function (error) {
+        console.log('Request failed', error);
+    });
