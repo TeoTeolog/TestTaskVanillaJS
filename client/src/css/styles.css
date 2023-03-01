@@ -20,6 +20,10 @@ body{
     justify-content: space-between;
 }
 
+.table-row:hover{
+    border: 3px solid black;
+}
+
 .table-item{
     width: 180px;
     background-color: gainsboro;
@@ -27,16 +31,12 @@ body{
     overflow: hidden;
 }
 
-.dark-back{
-    background-color: gray;
-}
-
-.light-back{
-    background-color: darkgray;
-}
-
 .table-head{
     background-color: lightslategray;
+}
+
+.table-head:hover{
+    border: 1px solid black;
 }
 
 .edit-field{
@@ -78,8 +78,23 @@ body{
 }
 
 .hideColumn{
-    width: 10px;
+    width: 0;
+    padding-left: 10px;
+    overflow: hidden;
 }
 
 .showColumn{
+}
+
+.selected{
+    border: 2px solid black;
+}
+
+
+.dark-back{
+    background-color: gray;
+}
+
+.light-back{
+    background-color: darkgray;
 }

@@ -68,10 +68,14 @@ function parsePerson(data, index){ //HTMLString
 
 function addEventListener(){
     const elementsRow = document.getElementsByClassName("table-row")
-    for (let i = 0; i < elementsRow.length; i++){
+    for (let i = 1; i < elementsRow.length; i++){
         elementsRow[i].onclick = function(e){
             console.log(this.id)
             editBox.innerHTML = parseEdit(findJSONByValue(contentData, "id", this.id))
+            for (let i = 1; i < elementsRow.length; i++){
+                elementsRow[i].className = elementsRow[i].className.replace('selected', ' ');
+            }
+            this.className += ' selected';
         }
     }
 }
@@ -192,7 +196,9 @@ function addSort(){
     const sortButtonsId = ['sortByFirstName', 'sortByLastName', 'sortByAbout', 'sortByEyeColor'];
     for (let i = 0; i < sortButtonsId.length; i++){
         let sortButton = document.getElementById(sortButtonsId[i]);
-        sortButton.onclick = function(){
+        sortButton.onclick = function(e){
+            console.log('[onclick/executeSort] this.parent: ', this.parentElement);
+            console.log('[onclick/executeSort] event target: ', e.target);
             executeSort(this, contentData, this.name);
         };
     }
@@ -205,28 +211,30 @@ const headItems = headTable[0].getElementsByClassName('table-item');
 
 function switchHideColumn(columnClassName){
     const columnItems = document.querySelectorAll('.' + columnClassName.split(' ').join('.'));
-    if(columnClassName.includes('hideColumn')){
-        for(let i = 0; i < columnItems.length; i++){
-            columnItems[i].className = columnItems[i].className.replace('hideColumn','showColumn');
-        }
-    }
-    else if(columnClassName.includes('showColumn')){
+    if(columnClassName.includes('showColumn')){
         for(let i = 0; i < columnItems.length; i++){
             columnItems[i].className = columnItems[i].className.replace('showColumn','hideColumn');
         }
     }
     else{
-        for(let i = 0; i < columnItems.length; i++){
-            columnItems[i].className += ' hideColumn';
+        if(columnClassName.includes('hideColumn')){
+            for(let i = 0; i < columnItems.length; i++){
+                columnItems[i].className = columnItems[i].className.replace('hideColumn','showColumn');
+            }
         }
+        else
+            for(let i = 0; i < columnItems.length; i++) {
+                columnItems[i].className += ' hideColumn';
+            }
     }
 }
 
 function addHide(){
     console.log('[addHide] headItems', headItems);
     for(let i = 0; i < headItems.length; i++){
-        headItems[i].onclick = function () {
-            console.log('[addHide] this.className', this.className);
+        headItems[i].onclick = function (e) {
+            console.log('[addHide] this', this);
+            if(e.target !== this) return;
             switchHideColumn(this.className);
         }
     }
